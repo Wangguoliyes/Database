@@ -1,0 +1,25 @@
+<view class="container">  
+<view class="formatInfo"></view>
+<block wx:for="{{formatData}}" wx:for-index="formatIndex" wx:for-item="formatItem" wx:key="formatIndex">
+
+<view class="infoTable"   bindtap="goToFormatInfo" data-name="{{formatItem.formatName}}">
+
+<text class="infoTableText"  >模版名称：{{formatItem.formatName}}</text>
+
+
+
+<text class="infoTableText" >创建时间：{{formatTime[formatIndex]}}</text>
+
+
+
+<text class="infoTableText" >模版备注:{{formatItem.remarks}}</text>
+
+
+
+</view>
+
+
+
+
+</block>
+</view>

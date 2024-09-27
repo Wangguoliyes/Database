@@ -1,0 +1,24 @@
+<view class="container">  
+<view class="formatInfo"></view>
+<block wx:for="{{formatData}}" wx:for-index="formatIndex" wx:for-item="formatItem" wx:key="formatIndex">
+
+<view class="infoTable"   bindtap="goToFormatInfo" data-id="{{formatItem._id}}" >
+
+
+<text  class="infoTableText">文档类型：{{formatItem.formatName}}</text>
+
+
+<text  class="infoTableText">接收时间：{{formatTime[formatIndex]}}</text>
+
+<text  class="infoTableText">提交昵称：{{formatItem.nickName}}</text>
+
+
+</view>
+
+
+
+
+
+
+</block>
+</view>

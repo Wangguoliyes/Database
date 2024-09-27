@@ -1,0 +1,59 @@
+
+page{
+  
+  background-color: rgb(245, 235, 207);
+  background-size:cover;
+  background-repeat: no-repeat; 
+  background-position: center; 
+
+}
+.container{
+  display: flex;
+  flex-direction: column; /* 垂直排列元素 */
+  align-items: center; /* 横向居中对齐元素 */
+ 
+  
+}
+.createFormat {
+  margin-top: 60rpx;
+  background-size: cover;
+  height: 100px;
+  width: 250px;
+  background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/createFormat.png?sign=8ac659412f91e9eb9c00082d9f712098&t=1727325378");
+  border-radius: 20rpx;
+  box-shadow: 1rpx 1rpx 10rpx ;
+}
+.createFormatText{
+  font-size: 60rpx;
+  margin: 10rpx;
+}
+
+
+.unReadMessage{
+  margin-top: 60rpx;
+  background-size: cover;
+  height: 100px;
+  width: 250px;
+  background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/unReadMessage.png?sign=95b5c41e27b7f65dd96395fe83817401&t=1727340578");
+  border-radius: 20rpx;
+  box-shadow: 1rpx 1rpx 10rpx ;
+}
+.unReadMessageText{
+  font-size: 60rpx;
+  margin: 10rpx;
+}
+
+
+.readMessage{
+  margin-top: 60rpx;
+  background-size: cover;
+  height: 100px;
+  width: 250px;
+  background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/readMessage.png?sign=0b79cbec81d74bcb5e71cff5b2141028&t=1727340751");
+  border-radius: 20rpx;
+  box-shadow: 1rpx 1rpx 10rpx ;
+}
+.readMessageText{
+  font-size: 60rpx;
+  margin: 10rpx;
+}

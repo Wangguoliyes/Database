@@ -1,0 +1,28 @@
+/* pages/format/format.wxss */
+page{
+  /* background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/background3.jpg?sign=d4a1654316eeb0ca3086527714e39c1a&t=1726803321"); */
+  background-color: #fdfde9;
+  /* background-size:cover;
+  background-repeat: no-repeat; 
+  background-position: center;  */
+
+}
+
+
+.infoTable{
+  background-color: rgb(247, 243, 232);
+  border-radius: 20rpx;
+  margin: 20rpx;
+  
+  box-shadow: 0rpx 1rpx 5rpx ;
+    width: 700rpx;
+    height: 200rpx;
+}
+
+.infoTableText{
+    display: block;
+   overflow:hidden;
+   text-overflow: ellipsis; 
+   white-space: nowrap; /* 不换行 */
+  margin: 20rpx;
+}

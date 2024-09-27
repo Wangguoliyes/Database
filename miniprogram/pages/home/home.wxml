@@ -1,0 +1,29 @@
+
+
+<view class="container">
+
+<view class="createFormat" bindtap="createFormat">
+<view class="createFormatText">创建</view>
+<view class="createFormatText" >模版</view>
+</view>
+
+
+<view class="unReadMessage" bindtap="unReadMessage">
+<view class="unReadMessageText">未读</view>
+<view class="unReadMessageText" >文档</view>
+</view>
+
+<view class="readMessage" bindtap="readMessage">
+<view class="readMessageText">已读</view>
+<view class="readMessageText" >文档</view>
+</view>
+
+
+</view>
+
+
+
+
+
+
+

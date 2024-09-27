@@ -1,0 +1,53 @@
+{
+  "pages": [
+  "pages/home/home",
+  "pages/message/message",
+  "pages/format/format",
+  "pages/contact/contact" ,
+  "pages/createFormat/createFormat",
+  "pages/LookMessage/LookMessage",
+  "pages/formatDetailInfomation/formatDetailInfomation",
+  "pages/messageDetailInfomation/messageDetailInfomation",
+  "pages/specialMessage/specialMessage"
+
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "XXX公司文档处理",
+    "navigationBarBackgroundColor": "#F5F5DC"
+   
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "image/tab/home.png",
+        "selectedIconPath": "image/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "文档",
+        "iconPath": "image/tab/message.png",
+        "selectedIconPath": "image/tab/message-active.png"
+      },
+      {
+        "pagePath": "pages/format/format",
+        "text": "模版",
+        "iconPath": "image/tab/format.png",
+        "selectedIconPath": "image/tab/format-active.png"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "text": "联系人",
+        "iconPath": "image/tab/contact.png",
+        "selectedIconPath": "image/tab/contact-active.png"
+      }
+    ]
+  },
+
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
