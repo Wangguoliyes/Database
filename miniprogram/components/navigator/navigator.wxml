@@ -1,0 +1,12 @@
+<view class="ROOT" >
+<view class="View"  >
+
+<view class="picture">
+ <image ></image>
+</view>
+<view class="text">
+  <text>d</text>
+</view>
+</view>
+
+</view>

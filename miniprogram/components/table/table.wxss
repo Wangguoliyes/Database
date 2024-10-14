@@ -1,0 +1,37 @@
+.scrollX{
+  margin-top: 20rpx;
+  height: auto;
+  } 
+.buttonBlockUp{
+margin-left: 42px;
+display: flex;
+}
+.buttonUp{
+  padding-bottom: 10px;
+  border: 1px solid #ccc;
+  font-size: 30rpx;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(255, 254, 222); 
+}
+.buttonLeft{
+  width: 30px;
+  height: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #ccc;
+  font-size: 30rpx;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 254, 222); 
+}
+
+.table{
+  display: flex;
+}
+.table-cell {
+  height: 50px;
+  border: 1px solid #ccc;
+  background-color: rgb(252, 244, 177);
+}

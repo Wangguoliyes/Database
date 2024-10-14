@@ -1,0 +1,1 @@
+<button class="Button" bindtap="Click" style="background-color: {{color}};">{{title}}</button>

@@ -1,23 +1,38 @@
 
 
 <view class="container">
-
-<view class="createFormat" bindtap="createFormat">
-<view class="createFormatText">创建</view>
-<view class="createFormatText" >模版</view>
+<my_squareMessage color="#d8c573" >
+<view>
+<text>模版数目：</text>
+<text>{{totalFormat}}</text>
+</view>
+<view>
+<text>文档数目：</text>
+<text>{{totalData}}</text>
 </view>
 
+</my_squareMessage>
 
-<view class="unReadMessage" bindtap="unReadMessage">
-<view class="unReadMessageText">未读</view>
-<view class="unReadMessageText" >文档</view>
+<view class="buttonGroup">
+
+</view>
+<!-- <view class="Navigator" >
+<my_navigator bindclick="Click_createFormat">
+<text>创建模版</text>
+</my_navigator>
 </view>
 
-<view class="readMessage" bindtap="readMessage">
-<view class="readMessageText">已读</view>
-<view class="readMessageText" >文档</view>
+<view class="Navigator">
+<my_navigator bindclick="Click_checkUnread">
+  <text>查看未读</text>
+</my_navigator>
 </view>
 
+<view class="Navigator">
+<my_navigator bindclick="Click_checkRead">
+  <text>查看已读</text>
+</my_navigator>
+</view> -->
 
 </view>
 

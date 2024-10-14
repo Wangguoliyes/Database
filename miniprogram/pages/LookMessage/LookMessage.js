@@ -8,43 +8,14 @@ Page({
    formatName:"",
    formatData:{},
    nickName:"",
-   readed:false
-  },
-
-  submit:function(e){
-    const db = wx.cloud.database();
-    const collection = db.collection('data');
-    const tempformatName=this.data.formatName
-    const tempFormatData=this.data.formatData
-    const tempNickName=this.data.nickName
-    const tempDate=new Date()
-    const tempReaded=this.data.readed
-    collection.add({
-      data:{
-        formatName:tempformatName,
-        formatData:tempFormatData,
-        createDate:tempDate,
-        nickName:tempNickName,
-        readed:tempReaded
-      },
-      success:res=>{
-        wx.showToast({
-          title: '提交成功',
-          icon:'success'
-        })
-      },
-      fail:err=>{
-        wx.showToast({
-          title: '提交失败',
-          icon:'error'
-        })
-
-      }
-
-    })
-
+   readed:false,
+   written:[],
+   radioValue:[],
+   checkValue: []
 
   },
+
+  
 
   onLoad(options) {
   const tempFormatName=options.formatName
@@ -57,44 +28,15 @@ Page({
     formatName:tempFormatName
   }).get({
     success:res=>{
-      this.setData({
-        formatData:res.data[0],
-      })
-
-
-      const temoCol=this.data.formatData.col
-      const tempRow=this.data.formatData.row
-      const tempTable=this.data.formatData.table
-   
-      const tempWritten = Array.from({ length: tempRow }, () => Array(temoCol).fill(false))
       
-      for( let i =0;i<tempRow;i++ ){
-        for( let j =0;j<temoCol;j++ ){
-            if(tempTable[i][j].length!=0){
-              tempWritten[i][j]=true
-            }
-        }
-      }
-     
-      
-    
-      const  tempRadioValue=new Array(this.data.formatData.radioGroup.length)
-      for(let i=0;i<this.data.formatData.radioGroup.length;i++){
-        tempRadioValue[i]=-1
-      }
-
-      const  tempCheckValue=new Array(this.data.formatData.checkGroup.length)
-     
-   
-    
       this.setData({
         formatData:{
-          ...this.data.formatData,
-          written:tempWritten,
-          radioValue:tempRadioValue,
-          checkValue: tempCheckValue
-        }
+          ...res.data[0].formatData},
+      },()=>{
+        this.create()
       })
+
+      
     },
     fail:err=>{
       wx.showToast({
@@ -107,8 +49,84 @@ Page({
   
   },
 
+  create(){
+    const tempCol=this.data.formatData.col
+    const tempRow=this.data.formatData.row
+    const tempTable=this.data.formatData.table
+    console.log("table ",tempTable)
+    console.log("tableCol ",tempCol)
+    console.log("tableRow ",tempRow)
+     const tempWritten = Array.from({ length: tempCol }, () => Array(tempRow).fill("true"))
+    
+    for( let i =0;i<tempCol;i++ ){
+      for( let j =0;j<tempRow;j++ ){
+          if(tempTable[i][j].length!=0){
+            tempWritten[i][j]="false"
+          }
+      }
+    }
+    console.log("tempWritten ", tempWritten)
+    
+  
+     const  tempRadioValue=new Array(this.data.formatData.radioGroup.length)
+     for(let i=0;i<this.data.formatData.radioGroup.length;i++){
+       tempRadioValue[i]=-1
+     }
+
+    const  tempCheckValue=new Array(this.data.formatData.checkGroup.length)
+   
+ 
+  
+    this.setData({
+      written:tempWritten,
+      radioValue:tempRadioValue,
+      checkValue: tempCheckValue
+    },()=>{
+      this.refreshComponentData()
+    })
+  },
+
+  refreshComponentData() {
+    const tempformatData = this.data.formatData;
+    const table = this.selectComponent('#table'); // 假设 table 组件的 id 为 "tableComponent"
+    if (table) {
+      // console.log("table is get")
+      table.setData({
+        editableArray:this.data.written,
+        formatData: tempformatData
+      });
+    }
+
+    const radioTable = this.selectComponent('#radioTable'); // 假设 table 组件的 id 为 "tableComponent"
+    if (radioTable) {
+      // console.log("radioTable is get")
+      radioTable.setData({
+        value:this.data.radioValue,
+        formatData: tempformatData
+      });
+    }
+
+    const checkTable = this.selectComponent('#checkTable'); // 假设 table 组件的 id 为 "tableComponent"
+    if (checkTable) {
+      // console.log("checkTable is get")
+      checkTable.setData({
+        value:this.data.checkValue,
+        formatData: tempformatData
+      });
+    }
+   
 
 
+    const  longText = this.selectComponent('#longText'); // 假设 table 组件的 id 为 "tableComponent"
+    if (longText) {
+      // console.log(" longText is get")
+      longText.setData({
+        formatData: tempformatData
+      });
+    }
+
+
+  },
   onReady() {
    
   },
@@ -131,77 +149,76 @@ Page({
   onPullDownRefresh(){
    
   },
-  LengthOfRow:function(value){
-    const baseWidth = 70; // 假设每个字符的宽度
-    const padding =30 ; // 内边距
-    return baseWidth  + padding* value; 
+  nameInput(e){
+    const tempName = e.detail.value
+    // console.log(e.detail.value)
+    this.setData({
+      nickName:tempName
+    })
   },
-  onInputChange: function (e) {
-    const widthArray=this.data.formatData.widthArray
-    const row= e.currentTarget.dataset.row
-    const col = e.currentTarget.dataset.col
-    const value = e.detail.value
-    const table = this.data.formatData.table
-    table[row][col]=value
+  Click(){
 
-    let maxLengthOfRow=this.LengthOfRow(table[row][0].length)
+    const db = wx.cloud.database();
+    const collection = db.collection('data');
+    const childTable= this.selectComponent('#table');
+    const childRadioTable= this.selectComponent('#radioTable');
+    const childCheckTable= this.selectComponent('#checkTable');
+    const childLongText= this.selectComponent('#longText');
+const tempTime = new Date()
+  this.setData({
+            formatData:{
+              ...this.data.formatData,
+              nickName:this.data.nickName,
+              row:childTable.data.formatData.row,
+              col:childTable.data.formatData.col,
+              table:childTable.data.formatData.table,
+              widthArray:childTable.data.formatData.widthArray,
+              radioGroup:childRadioTable.data.formatData.radioGroup,
+              radioGroupQuestion:childRadioTable.data.formatData.radioGroupQuestion,
+              radioValue:childRadioTable.data.value,
+              checkGroup:childCheckTable.data.formatData.checkGroup,
+              checkGroupQuestion:childCheckTable.data.formatData.checkGroupQuestion,
+              checkValue:childCheckTable.data.value,
+              longText:childLongText.data.formatData.longText,
+              longTextQuestion:childLongText.data.formatData.longTextQuestion,
+              theMaxLengthOfLongText:childLongText.data.formatData.theMaxLengthOfLongText,
+            create:tempTime
+            }
+          },
+          ()=>{
+            collection.add({
+              data: {
+                createTime:tempTime,
+                formatData:this.data.formatData
+              },
+              success: function(res) {
+                wx.showToast({
+                  title: '提交成功',
+                  icon:"success"
+                })
+                console.log(res)
+              },
+              fail: function(err) {
+                wx.showToast({
+                  title: '提交失败',
+                  icon:"error"
+                })
+                console.log(res)
+              }
+            })
+          })
+
    
-    for(let i=1;i<this.data.formatData.col;i++){
-      let temp = this.LengthOfRow(this.data.formatData.table[row][i].length)
+    
      
-      if(maxLengthOfRow<temp){
-        maxLengthOfRow=this.LengthOfRow(table[row][i].length)
+       
+       
+
+      
+         
+
       }
-    }
-    widthArray[row]= maxLengthOfRow
-  
-    this.setData({
-      formatData:{
-        ...this.data.formatData,
-        table:table,
-        widthArray:widthArray
-      }
-    })
-  },
-  onRadioChange:function(e){
-    
-    const tempRadioValue = this.data.formatData.radioValue
-    tempRadioValue[e.currentTarget.dataset.index]=e.detail.value
-    this.setData({
-      radioValue:tempRadioValue
-    })
-
-  },
-  onCheckChange:function(e){
-    console.log(e.detail.value)
-    const tempCheckValue = this.data.formatData.checkValue
-    tempCheckValue[e.currentTarget.dataset.index]=e.detail.value
-    this.setData({
-      checkValue:tempCheckValue
-    })
-
-  },
-  longTextInput:function(e){
-    const tempIndex= e.currentTarget.dataset.index
-    const tempLongText = this.data.formatData.longText
-    tempLongText[tempIndex]=e.detail.value
-    this.setData({
-      formatData:{
-        ...this.data.formatData,
-        longText:tempLongText
-      }
-    
-    })
 
 
-  },
-
-  nickNameInput:function(e){
-  
-    const tempValue=e.detail.value
    
-    this.setData({
-      nickName:tempValue
-    })
-  }
 })

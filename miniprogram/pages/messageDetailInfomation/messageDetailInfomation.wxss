@@ -1,6 +1,6 @@
 .container {
   padding: 20rpx;
-background-color: rgb(252, 248, 212);
+background-color: rgb(255, 253, 236);
 }
 .info{
   width: 100%;
@@ -100,6 +100,10 @@ margin-bottom: 30rpx;
 
 
 
+.adjustTheLength{
+  display: flex;
+  margin-bottom: 30rpx;
+}
 .lengthLimit{
   flex:4;
   padding:10rpx;
@@ -110,6 +114,12 @@ margin-bottom: 30rpx;
   box-shadow: 0rpx 1rpx 10rpx rgb(141, 139, 139);
 }
 
+.nikeName{
+  margin: 20rpx;
+}
 
+.submit{
+  margin: 20rpx;
+}
 
 

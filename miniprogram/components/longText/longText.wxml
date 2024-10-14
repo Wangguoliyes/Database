@@ -1,0 +1,23 @@
+<view class="ROOT">
+<block wx:for="{{formatData.longText}}" wx:key="itemIndex" 
+    wx:for-item="itemItem" wx:for-index="itemIndex">
+<view class="textareaView">
+<view class="adjustTheLength">
+<text class="lengthLimit">文本长度限制:{{formatData.theMaxLengthOfLongText[itemIndex]==0?"无":formatData.theMaxLengthOfLongText[itemIndex]}}</text>
+
+<block wx:if="{{able=='true'}}" >
+<button bindtap="addLength" class="addLength" data-index="{{itemIndex}}">+50</button>
+<button bindtap="decLength" class="decLength" data-index="{{itemIndex}}">-50</button>
+<button bindtap="removeLongTextSpecial" class="removeLongTextSpecial" data-index="{{itemIndex}}">删除该表</button>
+</block>
+
+</view>
+<input value="{{formatData.longTextQuestion[itemIndex]}}" placeholder="请输入问题" bindinput="longTextQuestionInput" data-index="{{itemIndex}}" disabled="{{titleable=='true'?false:true}}"/>
+<view class="lineForLongText"></view> 
+<textarea placeholder="请输入内容" maxlength="{{formatData.theMaxLengthOfLongText[itemIndex]}}" value="{{itemItem}}" bindinput="longTextInput" data-index="{{itemIndex}}" disabled="{{contentable=='true'?false:true}}">
+</textarea>
+</view>
+</block>
+</view>
+
+

@@ -1,91 +1,73 @@
 <view class="container">
-  <view class="info">
-<text> 模版名字:</text>
-<text> {{formatName}} </text>
-<text> 备注：</text>
-<text> {{formatData.remarks}} </text>
-
-  </view>
-  <view class="line"></view> 
 
 
-  <scroll-view scroll-x class="scrollX">
-  <view class="table">
-    <block wx:for="{{formatData.table}}" wx:key="rowIndex" wx:for-item="rowItem" wx:for-index="rowIndex">
-      <view class="table-row">
-        <block wx:for="{{rowItem}}" wx:key="colIndex" wx:for-item="colItem" wx:for-index="colIndex">
-          <input class="table-cell"  disabled="{{formatData.written[rowIndex][colIndex]}}" value="{{colItem}}" bindinput="onInputChange" data-row="{{rowIndex}}" data-col="{{colIndex}}" style="width:{{formatData.widthArray[rowIndex]}}rpx; "/>
-        </block>
-      </view>
-    </block>
 
-  </view>
-</scroll-view>
+<my_infoTable>
+<text slot="title" style=" margin: 10rpx; color:rgb(29, 89, 253)"> 模版信息</text>
+<text slot="content" style=" margin: 10rpx; color:rgb(6, 148, 65) "> 模版名字 :</text>
+<input slot="content"  disabled="true" value="{{formatName}}"/>
+<text slot="content" style=" margin: 10rpx; color:rgb(193, 18, 199)"> 备注 :</text>
+<textarea slot="content"  disabled="true" value="{{formatData.remarks}}" />
+</my_infoTable>
+
+<view class="line"></view> 
 
 
+
+<my_infoTable color="rgb(112, 203, 245)">
+<text slot="title" >表格组件基本信息</text>
+<text slot="content" >当前列值：{{formatData.row}}</text>
+<text slot="content" >当前行值：{{formatData.col}}</text>
+</my_infoTable>
+
+<my_table id="table"  deleteable="false" ></my_table>
 <!-- 单选组件 -->
 <view class="line"></view> 
 
+<my_infoTable color="rgb(111, 248, 93)">
+  <text slot="title" >单选组件信息</text>
+  <text slot="content" >单选组件数目：{{formatData.radioGroupQuestion.length}}</text>
+</my_infoTable>
+
+
+<my_radioTable id="radioTable" able="false" ></my_radioTable>
 
 
 
-<block wx:for="{{formatData.radioGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="radio-group-view">
-  <radio-group  class="radio-group" bindchange="onRadioChange" data-index="{{tableIndex}}">
-  <text>{{tableItem}}</text>
-    <block wx:for="{{formatData.radioGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-    <label style="display: flex;"><radio value="{{itemIndex}}" />
-    <text>{{itemItem}}</text>
-    </label>
-    </block> 
-  </radio-group>
-</view>
-</block>
 <!-- 多选组件 -->
 <view class="line"></view> 
 
-<block wx:for="{{formatData.checkGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="check-group-view">
-  <checkbox-group   class="check-group" bindchange="onCheckChange" data-index="{{tableIndex}}" >
-  <text>{{tableItem}}</text>
-  
-    <block wx:for="{{formatData.checkGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex" >
-    <label style="display: flex;"><checkbox value="{{itemIndex}}"/>
-    <text>{{itemItem}}</text>
-    </label>
-    </block> 
-  </checkbox-group>
- 
-</view>
-</block>
 <!-- 长文本 -->
-<view class="line"></view> 
 
+<my_infoTable color="rgb(223, 154, 255)">
+  <text slot="title" >多选组件信息</text>
+<text slot="content" >多选组件数目：{{formatData.checkGroupQuestion.length}}</text>
+</my_infoTable>
 
+<my_checkTable able="false" id="checkTable"></my_checkTable>
 
-
-<block wx:for="{{formatData.longText}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-<view class="textareaView">
-<view class="adjustTheLength">
-<text class="lengthLimit">文本长度限制:{{formatData.theMaxLengthOfLongText[itemIndex]==0?"无限制":formatData.theMaxLengthOfLongText[itemIndex]}}</text>
-</view>
-
-<text> {{formatData.longTextQuestion[itemIndex]}}</text>
-<view class="lineForLongText"></view> 
-<textarea placeholder="请输入内容" maxlength="{{theMaxLengthOfLongText[itemIndex]}}" value="{{itemItem}}" bindinput="longTextInput" data-index="{{itemIndex}}"></textarea>
-</view>
-</block>
 
 <view class="line"></view> 
 
 
-<view class="info">
- <text>提交人昵称：(昵称不能为空）</text><input bindinput="nickNameInput" placeholder="在此输入昵称" class="nickName"/>
-<button class="submit" bindtap="submit"> 提交</button>
+<my_infoTable color="rgb(253, 137, 137)">
+  <text slot="title" >文本组件信息</text>
+  <text  slot="content" >文本组件数目：{{formatData.longText.length}}</text>
+</my_infoTable>
 
+<my_longText  id="longText" able="false" titleable='false'></my_longText>
+
+<view class="line"></view> 
+
+<my_infoTable>
+<text slot="title" >提交人名称</text>
+<input  slot="content"  placeholder="在此输入名称" bindinput="nameInput" />
+</my_infoTable>
+
+<view class="submit">
+<my_buttonSquare bindclick="Click"  >
+<text>点我提交</text>
+</my_buttonSquare>
 </view>
 
 </view>

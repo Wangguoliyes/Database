@@ -2,100 +2,10 @@
   padding: 20rpx;
 background-color: rgb(255, 253, 236);
 }
-.info{
-  width: 100%;
-  height: auto;
-  background-color: rgb(226, 225, 225);
-  border-radius: 10rpx;
-  box-shadow: 0 1rpx 10rpx rgb(0, 0, 0,0.5);
-  text-align: center; 
- 
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.info text{
-  margin: 10rpx;
-}
-
-.info textarea{
-  margin: 10rpx;
- 
-    height: 100rpx;    /* 高度可以根据需要调整 */
-    padding: 10rpx;    /* 内边距让输入框更美观 */
-
-
-  
-}
-.button-group-table{
-  display: flex;
-  justify-content: space-between; /* 平分间隔 */
-  margin: 20rpx; 
-}
-.button-group-table button {
-
-  background: linear-gradient(90deg, #f5f8c3, #f5ebc9); 
-  color: rgb(0, 0, 0); 
-   padding: 12rpx 24rpx;  
-   border-radius: 15rpx;  
-  text-align: center; 
-  font-size: 30rpx; 
-  box-shadow: 0 0rpx 5rpx rgba(0, 0, 0, 0.5);
-  margin: 0 20rpx; 
-}
 
 
 
-.scrollX{
-height: auto;
-} 
 
-.table{
-  display: flex;
-}
-.table-cell {
-  height: 50px;
-  border: 1px solid #ccc;
-  background-color: rgb(248, 246, 246);
-}
-input {
-  padding: 10rpx;
-}
-.buttonBlockUp{
-  margin-left: 42px;
-display: flex;
-}
-
-.buttonUp{
-  padding: 10rpx;
-  border: 1px solid #ccc;
-  font-size: 30rpx;
-  text-align: center;
-  justify-content: center;
-  background-color: rgb(255, 254, 222); 
-}
-
-.buttonLeft{
-  width: 30px;
-  height: 50px;
-  padding: 10rpx;
-  border: 1px solid #ccc;
-  font-size: 30rpx;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(255, 254, 222); 
-}
-
-
-.lineForLongText{
-  width: 100%;             /* 分隔线的宽度 */
-  height: 1px;             /* 分隔线的高度 */
-  background-color: rgb(141, 139, 139);   /* 分隔线颜色 */
-  margin: 5px 0;      
-}
 .line {
   width: 100%;             /* 分隔线的宽度 */
   height: 2px;             /* 分隔线的高度 */
@@ -103,105 +13,10 @@ display: flex;
   margin: 30px 0;          /* 分隔线上下的外边距 */
 }
 
-.radio-group-view{
-padding: 20rpx;
-background-color: rgb(241, 241, 241);
-border-radius: 15rpx;
-box-shadow: 0 1rpx 15rpx rgb(141, 139, 139);
-margin-bottom: 30rpx;
-}
-
-.radio-group{
-  display: flex;              
-  flex-direction: column;  
-}
-
-.radio-group-button-view{
-  display: flex;
-}
-.radio-group-button-view button{
-  background-color: rgb(251, 253, 233);
-  margin: 10rpx;
-  font-size: 25rpx;
-}
-.check-group-view{
-  padding: 20rpx;
-  background-color: rgb(241, 241, 241);
-  border-radius: 15rpx;
-  box-shadow: 0 1rpx 15rpx rgb(141, 139, 139);
-  margin-bottom: 30rpx;
-  }
-  
-.check-group{
-  display: flex;              
-  flex-direction: column;  
-}
-
-.check-group-button-view{
-  display: flex;
-}
-.check-group-button-view button{
-  background-color: rgb(251, 253, 233);
-  margin: 10rpx;
-  font-size: 25rpx;
-}
-
-.textareaView{
-  margin-top:30rpx;
-  padding: 20rpx;
-  background-color: rgb(241, 241, 241);
-  border-radius: 15rpx;
-  box-shadow: 0 1rpx 15rpx rgb(141, 139, 139);
-  margin-bottom: 30rpx;
-
-}
 
 
 
-.adjustTheLength{
-  display: flex;
-  margin-bottom: 30rpx;
-}
-.lengthLimit{
-  flex:4;
-  padding:10rpx;
-  background-color: rgb(255, 251, 213);
-  border-radius: 20rpx;
-  line-height: 60rpx;
-  font-size: 25rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgb(141, 139, 139);
-}
-.adjustTheLength .addLength{
- 
-  flex:1;
-  line-height: 60rpx;
-  border-radius: 20rpx;
-  font-size: 25rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgb(141, 139, 139);
-  background-color: rgb(134, 196, 255);
-}
-
-.adjustTheLength .decLength{
-
-  flex:1;
-  line-height: 60rpx;
-  border-radius: 20rpx;
-  font-size: 25rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgb(141, 139, 139);
-  background-color: rgb(255, 132, 128);
-}
-.adjustTheLength .removeLongTextSpecial{
-flex:1;
-border-radius: 0;
-margin-left: 20rpx;
-font-size: 20rpx;
-background-color: rgb(255, 79, 67);
-}
-
-
-
-.finalSubmit button{
-background-color: rgb(253, 255, 153);
-border-radius: 20rpx;
-border:1rpx solid 
+.buttonOne {
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }

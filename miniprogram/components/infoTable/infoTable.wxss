@@ -1,0 +1,30 @@
+.ROOT{
+  margin: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  flex-direction: column;
+/* background-color: rgb(220, 255, 255); */
+}
+.View{
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  flex-direction: column;
+  width: 90%;
+  
+  padding: 20rpx;
+  border-radius: 0rpx;
+  box-shadow: 0rpx 0rpx 2rpx gray;
+  text-align: center
+}
+
+.Line{
+  margin: 20rpx;
+height: 1rpx;
+background-color: rgb(0, 0, 0);
+width: 80%;
+
+}
+
+

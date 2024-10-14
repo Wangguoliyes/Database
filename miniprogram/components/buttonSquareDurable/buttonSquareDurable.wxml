@@ -1,0 +1,5 @@
+<!--components/buttonSquare/buttonSquare.wxml-->
+
+<view class="View" bind:tap="press" style="background-color: {{backgroundColor}};">
+<slot></slot>
+</view>

@@ -1,4 +1,21 @@
 {
+"usingComponents": {
+  "my_navigator": "/components/navigator/navigator",
+  "my_buttonOne": "/components/buttonOne/buttonOne",
+  "my_buttonSquare": "/components/buttonSquare/buttonSquare",
+  "my_infoTable": "/components/infoTable/infoTable",
+  "my_itemTable": "/components/itemTable/itemTable",
+  "my_radioTable": "/components/radioTable/radioTable",
+  "my_table": "/components/table/table",
+  "my_buttonSquareDurable":"/components/buttonSquareDurable/buttonSquareDurable",
+  "my_checkTable": "/components/checkTable/checkTable",
+  "my_longText":"/components/longText/longText",
+  "my_ovalMessage":"/components/ovalMessage/ovalMessage",
+  "my_squareMessage":"/components/squareMessage/squareMessage"
+
+
+},
+
   "pages": [
   "pages/home/home",
   "pages/message/message",
@@ -13,7 +30,7 @@
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "XXX公司文档处理",
+    
     "navigationBarBackgroundColor": "#F5F5DC"
    
   },

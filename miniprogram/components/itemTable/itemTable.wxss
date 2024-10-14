@@ -1,0 +1,23 @@
+.ROOT{
+  display: flex;
+  justify-content: center;
+}
+.View{
+  width: 80%;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+  box-shadow:0 0 5rpx rgb(141, 140, 140);
+}
+.View:active{
+/* background-color: rgb(226, 191, 95); */
+  width: 90%;
+  height: 220rpx;
+  box-shadow:0 0 10rpx rgb(78, 77, 77);
+  transition-duration: 0.3s;
+}
+.Text{
+  margin: 20rpx;
+  overflow: hidden;             /* 隐藏超出部分 */
+  text-overflow: ellipsis;      /* 使用省略号代替被隐藏的文本 */
+  white-space: nowrap; 
+}

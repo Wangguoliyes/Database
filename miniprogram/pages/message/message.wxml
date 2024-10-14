@@ -1,24 +1,40 @@
+<wxs src="utils.wxs" module="utils" />
+
 <view class="container">  
-<view class="formatInfo"></view>
-<block wx:for="{{formatData}}" wx:for-index="formatIndex" wx:for-item="formatItem" wx:key="formatIndex">
 
-<view class="infoTable"   bindtap="goToFormatInfo" data-id="{{formatItem._id}}" >
+<my_infoTable color="rgb(193, 206, 255)">
+<text slot="title" style="color: rgb(10, 84, 168);">文档数目：</text>
+<text slot="content" style="color: rgb(4, 1, 143);">{{totalNumber}}</text>
+</my_infoTable>
 
+<view class="theHead">
+<my_buttonSquareDurable bindclick="manageTap" >
+<text >管理</text>
+</my_buttonSquareDurable>
 
-<text  class="infoTableText">文档类型：{{formatItem.formatName}}</text>
-
-
-<text  class="infoTableText">接收时间：{{formatTime[formatIndex]}}</text>
-
-<text  class="infoTableText">提交昵称：{{formatItem.nickName}}</text>
-
-
+<my_buttonSquare bindclick="deleteTap">
+<text >删除</text>
+</my_buttonSquare >
 </view>
 
 
 
 
 
+<block wx:for="{{formatData}}" wx:for-index="messageIndex" wx:for-item="messageItem" wx:key="messageIndex">
 
-</block>
+
+<my_itemTable change="{{utils.myIndex(needDelete,messageItem._id)?true:false}}"  bindclick="goToMessageInfo" data-name="{{messageItem.formatData.formatName}}" data-id="{{messageItem._id}}">
+<text slot="title1" >模版名称：</text>
+<text slot="content1" >{{messageItem.formatData.formatName}}</text>
+<text slot="title2"  >提交人：</text>
+<text slot="content2"  >{{messageItem.formatData.nickName}}
+</text>
+<text slot="title3">接收时间：</text>
+<text slot="content3">{{formatTime[messageIndex]}}</text>
+</my_itemTable> 
+
+
+
+</block> 
 </view>

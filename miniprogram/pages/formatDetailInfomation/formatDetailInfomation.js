@@ -3,9 +3,17 @@ Page({
 
   data: {
     formatName:"",
-    formatData:{},
-    // messageName:"",
-    // messageRemarks:""
+    formatData: {
+        checkGroup:[],
+        checkGroupQuestion:[],
+        col:0,
+        formatName:"",
+        table:[],
+        widthArray:[],
+        row:0,
+ 
+    }
+
   },
 
   onLoad(options) {
@@ -18,11 +26,18 @@ Page({
       formatName:this.data.formatName
     }).get({
       success:res=>{
-        console.log(res.data)
+         console.log("RES",res)
         this.setData({
-          formatData:res.data[0]
+          formatData:{
+              ...res.data[0].formatData
+          }
+        },
+        ()=>{
+          wx.nextTick(() => {
+            this.refreshComponentData();
+          });
         })
-       
+      
       },
       fail:res=>{
         wx.showToast({
@@ -33,60 +48,51 @@ Page({
 
     })
   },
-//   messageNameInput:function(e){
-//     this.setData({
-//       messageName:e.detail.value
-//     })
-//   },
-//   messageRemarksInput:function(e){
-//     this.setData({
-//       messageRemarks:e.detail.value
-//     })
-//   },
-//   transformToMessage:function(e){
-// const tempFormatName = this.data.formatName
-// const tempMessageName= this.data.messageName
-// const tempMessageRemarks=this.data.messageRemarks
 
-// if(tempMessageName.length==0){
-//   wx.showToast({
-//     title: '文档名字不能为空',
-//     icon:"error"
-//   })
-//   return 
-// }
-// const db = wx.cloud.database();
-// const collection = db.collection('data');
-// collection.where({
-//   messageName: tempMessageName
-// }).get().then(res=>{
-// if(res.data.length>0){
-// wx.showToast({
-//   title: '文档名字冲突',
-//   icon:"error"
-// })
-// }
-// else{
-//   wx.navigateTo({
-//     url:`../LookMessage/LookMessage?formatName=${tempFormatName}&messageName=${tempMessageName}&messageRemarks=${tempMessageRemarks}`
-//   })
-// }
+  refreshComponentData() {
+    const tempformatData = this.data.formatData;
+    const table = this.selectComponent('#table'); // 假设 table 组件的 id 为 "tableComponent"
+    if (table) {
+      // console.log("table is get")
+      table.setData({
+        formatData: tempformatData
+      });
+    }
 
-// })
+    const radioTable = this.selectComponent('#radioTable'); // 假设 table 组件的 id 为 "tableComponent"
+    if (radioTable) {
+      // console.log("radioTable is get")
+      radioTable.setData({
+        formatData: tempformatData
+      });
+    }
 
+    const checkTable = this.selectComponent('#checkTable'); // 假设 table 组件的 id 为 "tableComponent"
+    if (checkTable) {
+      // console.log("checkTable is get")
+      checkTable.setData({
+        formatData: tempformatData
+      });
+    }
    
 
-//   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
+    const  longText = this.selectComponent('#longText'); // 假设 table 组件的 id 为 "tableComponent"
+    if (longText) {
+      // console.log(" longText is get")
+      longText.setData({
+        formatData: tempformatData
+      });
+    }
+
+
+  },
+
   onReady() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+
   onShow() {
     
   },
@@ -129,5 +135,18 @@ Page({
       title: '填写表格',
       path:`pages/LookMessage/LookMessage?formatName=${formatName}`,
     }
+  },
+
+  changeFormatBasedOnTheFormat:function(e){
+    const tempName=this.data.formatName
+    wx.navigateTo({
+      url:`../createFormat/createFormat?data=${tempName}`
+    })
+  },
+  lookForTheRelavantMessage:function(e){
+    const tempName=this.data.formatName
+    wx.navigateTo({
+      url:`../specialMessage/specialMessage?data=${tempName}`
+    })
   }
 })

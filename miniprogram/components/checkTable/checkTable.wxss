@@ -1,0 +1,29 @@
+.check-group-view{
+  margin-top: 20rpx;
+  width: 90%;
+  padding: 20rpx;
+  background-color: rgb(210, 255, 245);
+  border-radius: 5rpx;
+  box-shadow: 0 0rpx 5rpx rgb(141, 139, 139);
+  margin-bottom: 10rpx;
+  }
+  
+.check-group{
+  display: flex;              
+  flex-direction: column;  
+}
+
+.check-group-button-view{
+  display: flex;
+}
+.check-group-button-view button{
+  background-color: rgb(251, 253, 233);
+  margin: 10rpx;
+  font-size: 25rpx;
+}
+.ROOT{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

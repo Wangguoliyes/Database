@@ -1,0 +1,36 @@
+
+
+
+<scroll-view scroll-x class="scrollX">
+<block wx:if="{{deleteable=='true'}}">
+<view class="buttonBlockUp">
+<block  wx:for="{{formatData.col}}" wx:for-index="index" wx:key="index">
+<view  bindtap="deleteTapUp" data-col="{{index}}" class="buttonUp" style=" flex: none;width:{{formatData.widthArray[index]}}px ;">删除</view>
+
+</block>
+
+</view>
+</block>
+
+
+ <view class="table">
+
+<block wx:if="{{deleteable=='true'}}">
+<view class="buttonBlockLeft">
+<block  wx:for="{{formatData.row}}" wx:for-index="index"  wx:key="index">
+<view  bindtap="deleteTapLeft" data-row="{{index}}" class="buttonLeft"  >删除</view>
+</block>
+</view>
+</block>
+
+
+  <block wx:for="{{formatData.table}}" wx:key="colIndex" wx:for-item="colItem" wx:for-index="colIndex">
+    <view class="table-row">
+      <block wx:for="{{colItem}}" wx:key="rowIndex" wx:for-item="rowItem" wx:for-index="rowIndex">
+        <input class="table-cell" value="{{rowItem}}" bindinput="onInputChange" data-row="{{rowIndex}}" data-col="{{colIndex}}" style="width:{{formatData.widthArray[colIndex]}}px;"   disabled="{{(editable=='false')||(editableArray[rowIndex][colIndex]=='false')}}"  />
+      </block>
+    </view>
+  </block>
+
+</view> 
+</scroll-view>

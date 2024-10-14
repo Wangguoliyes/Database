@@ -1,88 +1,86 @@
 <view class="container">
-  <view class="info">
-<text> 模版名字:</text>
-<text> {{formatName}} </text>
-<text> 备注：</text>
-<text> {{formatData.remarks}} </text>
 
-  </view>
-  <view class="line"></view> 
+<my_infoTable>
+<text slot="title" style=" margin: 10rpx; color:rgb(29, 89, 253)"> 模版信息</text>
+<text slot="content" style=" margin: 10rpx; color:rgb(6, 148, 65)"> 模版名字 :</text>
+<input slot="content"  disabled="true" value="{{formatName}}"/>
+<text slot="content" style=" margin: 10rpx; color:rgb(193, 18, 199)"> 备注 :</text>
+<textarea slot="content"  disabled="true" value="{{formatData.remarks}}" />
 
+</my_infoTable>
 
-  <scroll-view scroll-x class="scrollX">
-  <view class="table">
-    <block wx:for="{{formatData.table}}" wx:key="rowIndex" wx:for-item="rowItem" wx:for-index="rowIndex">
-      <view class="table-row">
-        <block wx:for="{{rowItem}}" wx:key="colIndex" wx:for-item="colItem" wx:for-index="colIndex">
-          <input class="table-cell" disabled="true" value="{{colItem}}" bindinput="onInputChange" data-row="{{rowIndex}}" data-col="{{colIndex}}" style="width:{{formatData.widthArray[rowIndex]}}rpx; "/>
-        </block>
-      </view>
-    </block>
-
-  </view>
-</scroll-view>
+<view class="line"></view> 
 
 
+
+<my_infoTable color="rgb(112, 203, 245)">
+<text slot="title"   >表格组件基本信息</text>
+<text slot="content" >当前列值：{{formatData.row}}</text>
+<text slot="content" >当前行值：{{formatData.col}}</text>
+</my_infoTable>
+
+<my_table id="table"  deleteable="false" editable="false"></my_table>
 <!-- 单选组件 -->
 <view class="line"></view> 
 
+<my_infoTable color="rgb(111, 248, 93)">
+  <text slot="title" >单选组件信息</text>
+  <text slot="content" >单选组件数目：{{formatData.radioGroupQuestion.length}}</text>
+</my_infoTable>
+
+
+<my_radioTable id="radioTable" able="false" ></my_radioTable>
 
 
 
-<block wx:for="{{formatData.radioGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="radio-group-view">
-  <radio-group  class="radio-group">
-  <text>{{tableItem}}</text>
-    <block wx:for="{{formatData.radioGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-    <label style="display: flex;"><radio  />
-    <text>{{itemItem}}</text>
-    </label>
-    </block> 
-  </radio-group>
-</view>
-</block>
 <!-- 多选组件 -->
 <view class="line"></view> 
 
-<block wx:for="{{formatData.checkGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="check-group-view">
-  <checkbox-group   class="check-group">
-  <text>{{tableItem}}</text>
-  
-    <block wx:for="{{formatData.checkGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex" >
-    <label style="display: flex;"><checkbox/>
-    <text>{{itemItem}}</text>
-    </label>
-    </block> 
-  </checkbox-group>
- 
-</view>
-</block>
 <!-- 长文本 -->
+
+<my_infoTable color="rgb(223, 154, 255)">
+  <text slot="title" >多选组件信息</text>
+<text slot="content" >多选组件数目：{{formatData.checkGroupQuestion.length}}</text>
+</my_infoTable>
+
+<my_checkTable able="false" id="checkTable"></my_checkTable>
+
+
 <view class="line"></view> 
 
 
+<my_infoTable color="rgb(253, 137, 137)">
+  <text slot="title" >文本组件信息</text>
+  <text  slot="content" >文本组件数目：{{formatData.longText.length}}</text>
+</my_infoTable>
 
-
-<block wx:for="{{formatData.longText}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-<view class="textareaView">
-<view class="adjustTheLength">
-<text class="lengthLimit">文本长度限制:{{formatData.theMaxLengthOfLongText[itemIndex]==0?"无限制":formatData.theMaxLengthOfLongText[itemIndex]}}</text>
-</view>
-
-<text> {{formatData.longTextQuestion[itemIndex]}}</text>
-<view class="lineForLongText"></view> 
-<text>{{itemItem}}</text>
-</view>
-</block>
+<my_longText able="false" titleable="false" contentable="false" id="longText"></my_longText>
 
 <view class="line"></view> 
+<my_infoTable noLine="true">
+<text slot="title"> 点击右上角分享至他人填写</text>
+</my_infoTable>
 
-<view class="info">
-<text>请点击右上角以此分享此页面</text>
+<view class="Button">
+<my_buttonSquare width="300rpx"  color="rgb(95, 196, 255)" bindtap="changeFormatBasedOnTheFormat">
+<text   >在此基础修改模版</text>
+</my_buttonSquare>
+
+<my_buttonSquare width="300rpx"  color="rgb(155, 196, 255)" bindtap="lookForTheRelavantMessage">
+<text   >查看模版相关文档</text>
+</my_buttonSquare>
 </view>
+
+<view class="Button">
+<my_buttonSquare width="300rpx"  color="rgb(219, 252, 101)"  bindtap="changeFormatBasedOnTheFormat">
+<text  >数据汇总</text>
+</my_buttonSquare>
+
+<my_buttonSquare width="300rpx"  color="aquamarine"  >
+<text   >查看模版相关文档</text>
+</my_buttonSquare>
+</view>
+
+
 
 </view>

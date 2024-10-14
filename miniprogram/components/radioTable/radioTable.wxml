@@ -1,0 +1,32 @@
+<view class="ROOT"> 
+<block wx:for="{{formatData.radioGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
+
+<view class="radio-group-view">
+
+<block wx:if="{{able=='true'}}">
+<view class="radio-group-button-view">
+
+<button bindtap="addRadioItem" data-index="{{tableIndex}}">增加选项</button>
+<button bindtap="removeRadioItem"  data-index="{{tableIndex}}">删除选项</button>
+<button bindtap="removeRadioItemSpeacial"  data-index="{{tableIndex}}">删除该表</button>
+</view>
+</block>
+
+  <radio-group  class="radio-group" data-index="{{tableIndex}}" bindchange="onRadioChange">
+    <input value="{{tableItem}}"  data-tableindex="{{tableIndex}}" bindinput="tableQuestionInput"  placeholder="输入问题值"  disabled="{{able=='true'?false:true}}" />
+
+    <block wx:for="{{formatData.radioGroup[tableIndex]}}" wx:key="itemIndex" 
+    wx:for-item="itemItem" wx:for-index="itemIndex">
+    <label style="display: flex; margin-top: 10rpx;">
+    <radio value="{{itemIndex}}" 
+     checked="{{render=='true'&&value[tableIndex]==itemIndex}}"/>
+    <input value="{{itemItem}}"  data-tableindex="{{tableIndex}}" data-itemindex="{{itemIndex}}" bindinput="tableItemInput" placeholder="输入选项值"  disabled="{{able=='true'?false:true}}" />
+    </label>
+    </block> 
+
+
+  </radio-group>
+ 
+</view>
+</block>
+</view>

@@ -1,0 +1,12 @@
+<view class="ROOT">
+<view class="View" style="background-color: {{color}};">
+<slot name="title" class="Title"></slot>
+
+<block wx:if="{{noLine=='false'}}">
+<view class="Line"></view>
+
+</block>
+
+<slot name="content" class="Content"></slot>
+</view>
+</view>

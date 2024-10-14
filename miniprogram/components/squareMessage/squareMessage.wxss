@@ -1,0 +1,15 @@
+.ROOT{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+}
+.View{
+width: 100%;
+height: 120rpx;
+
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}

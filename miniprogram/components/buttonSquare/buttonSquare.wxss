@@ -1,0 +1,15 @@
+
+.View{
+
+border-radius: 5rpx;
+box-shadow: 0 0 5rpx gray;
+display: flex;
+justify-content: center;
+align-items: center;
+transition-duration: 0.3s;
+}
+.View:active{
+  box-shadow: 0 0 15rpx gray;
+  background-color: #35cbf8; 
+}
+

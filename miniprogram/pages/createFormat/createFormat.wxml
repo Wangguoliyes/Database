@@ -1,165 +1,106 @@
 <view class="container">
-  <view class="info">
-<text> 模版名字:（应有唯一性）</text>
-<input data-name="formatName" bindinput="onInput" value="{{formatName}}" placeholder="请输入模版名称"/>
 
-<text> 备注：</text><textarea data-name="remarks" bindinput="onInput" maxlength="0" value="{{remarks}}" placeholder="请输入备注内容" />
+  
 
-  </view>
+<my_infoTable>
+<text slot="title"> 模版信息</text>
+<text slot="content"> 模版名字：(应有唯一性)</text>
+<input slot="content" placeholder="请输入模版名称" data-name="formatName" bindinput="onInput" value="{{formatData.formatName}}"/>
+<text slot="content"> 备注</text>
+<textarea slot="content" placeholder="请输入备注" data-name="remarks" bindinput="onInput" value="{{formatData.remarks}}"/>
+</my_infoTable>
+
+
   <view class="line"></view> 
 
-<view class="info">
-  <text>表格组件基本信息</text>
-<text>当前列值：{{row}}</text>
-<text>当前行值：{{col}}</text>
-</view>
+
+<my_infoTable noLine="true" color="rgb(112, 203, 245)">
+<text slot="title" >表格组件</text>
+
+</my_infoTable>
 
 
-  <view class="button-group-table">
-    <button bindtap="addRow">添加列</button>
-    <button bindtap="addCol">添加行</button>
+
+  <view class="buttonOne">
+    <my_buttonOne title="添加行" bindclick="addRow"></my_buttonOne>
   </view>
-  <view class="button-group-table">
-    <button bindtap="removeRow">删除列</button>
-    <button bindtap="removeCol">删除行</button>
+    <view class="buttonOne">
+    <my_buttonOne title="添加列"  bindclick="addCol"></my_buttonOne>
   </view>
-
-
-
-  <scroll-view scroll-x class="scrollX">
-
-  <view class="buttonBlockUp">
-  <block  wx:for="{{row}}" wx:for-index="index" wx:key="index">
-  <view  bindtap="deleteTapUp" data-row="{{index}}" class="buttonUp" style=" flex: none;width:{{widthArray[index]}}rpx ;">删除</view>
-  </block>
+    <view class="buttonOne">
+    <my_buttonOne title="删除行"  bindclick="removeRow"></my_buttonOne>
   </view>
+    <view class="buttonOne">
+    <my_buttonOne title="删除列" bindclick="removeCol"></my_buttonOne>
+  </view>
+    
+<my_table id="table" ></my_table>
   
-  <view class="table">
-
-    <view class="buttonBlockLeft">
-  <block  wx:for="{{col}}" wx:for-index="index"  wx:key="index">
-  <view  bindtap="deleteTapLeft" data-col="{{index}}" class="buttonLeft"  >删除</view>
-  </block>
-  </view>
-
-    <block wx:for="{{table}}" wx:key="rowIndex" wx:for-item="rowItem" wx:for-index="rowIndex">
-      <view class="table-row">
-        <block wx:for="{{rowItem}}" wx:key="colIndex" wx:for-item="colItem" wx:for-index="colIndex">
-          <input class="table-cell" value="{{colItem}}" bindinput="onInputChange" data-row="{{rowIndex}}" data-col="{{colIndex}}" style="width:{{widthArray[rowIndex]}}rpx;"/>
-        </block>
-      </view>
-    </block>
-
-  </view>
-</scroll-view>
-
-
-<!-- 单选组件 -->
+  
 <view class="line"></view> 
 
-<view class="info">
-  <text>单选组件基本信息</text>
-<text>单选组件数目：{{radioGroupQuestion.length}}</text>
-</view>
-<view class="button-group-table">
-    <button bindtap="createRadioTable">创建单选组件</button>
-    <button bindtap="removeRadioTable">删除单选组件</button>
-</view>
+
+<my_infoTable noLine="true"  color="rgb(111, 248, 93)">
+  <text slot="title">单选组件</text>
+  
+</my_infoTable>
 
 
 
-<block wx:for="{{radioGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="radio-group-view">
+<view class="buttonOne">
+    <my_buttonOne title="创建单选组件" bindclick="createRadioTable"></my_buttonOne>
+  </view>
+  <view class="buttonOne">
+    <my_buttonOne title="删除单选组件" bindclick="removeRadioTable"></my_buttonOne>
+  </view>
 
-<view class="radio-group-button-view">
-<button bindtap="addRadioItem" data-index="{{tableIndex}}">增加选项</button>
-<button bindtap="removeRadioItem"  data-index="{{tableIndex}}">删除选项</button>
-<button bindtap="removeRadioItemSpeacial"  data-index="{{tableIndex}}">删除该表</button>
-</view>
-
-  <radio-group  class="radio-group">
-    <input value="{{tableItem}}"  data-tableindex="{{tableIndex}}" bindinput="tableQuestionInput"  placeholder="输入问题值"/>
-
-    <block wx:for="{{radioGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-    <label style="display: flex;"><radio  /><input value="{{itemItem}}"  data-tableindex="{{tableIndex}}" data-itemindex="{{itemIndex}}" bindinput="tableItemInput" placeholder="输入选项值" /></label>
-    </block> 
+<my_radioTable id="radioTable" ></my_radioTable>
 
 
-  </radio-group>
- 
-</view>
-</block>
 <!-- 多选组件 -->
+
+
+
 <view class="line"></view> 
-<view class="info">
-  <text>多选组件基本信息</text>
-<text>多选组件数目：{{checkGroupQuestion.length}}</text>
-</view>
 
+<my_infoTable noLine="true" color="rgb(223, 154, 255)">
+  <text slot="title">多选组件</text>
 
+</my_infoTable>
 
-<view class="button-group-table">
-    <button bindtap="createCheckTable">创建多选组件</button>
-    <button bindtap="removeCheckTable">删除多选组件</button>
-</view>
+<view class="buttonOne">
+    <my_buttonOne title="创建多选组件" bindclick="createCheckTable"></my_buttonOne>
+  </view>
+  <view class="buttonOne">
+    <my_buttonOne title="删除单选组件" bindclick="removeCheckTable"></my_buttonOne>
+  </view>
 
-<block wx:for="{{checkGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
-<view class="check-group-view">
+<my_checkTable id="checkTable" ></my_checkTable>
 
-<view class="check-group-button-view">
-<button bindtap="addCheckItem"  data-index="{{tableIndex}}">增加选项</button>
-<button bindtap="removeCheckItem" data-index="{{tableIndex}}">删除选项</button>
-<button bindtap="removeCheckItemSpecial" data-index="{{tableIndex}}">删除该表</button>
-
-</view>
-
-  <checkbox-group  class="check-group">
-    <input value="{{tableItem}}" bindinput="checkQuestionInput" data-tableindex="{{tableIndex}}"  placeholder="输入问题值"/>
-
-    <block wx:for="{{checkGroup[tableIndex]}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-    <label style="display: flex;"><checkbox/><input bindinput="checkItemInput" value="{{itemItem}}"  data-tableindex="{{tableIndex}}" data-itemindex="{{itemIndex}}"  placeholder="输入选项值" /></label>
-    </block> 
-
-
-  </checkbox-group>
- 
-</view>
-</block>
 <!-- 长文本 -->
 <view class="line"></view> 
+<my_infoTable noLine="true" color="rgb(253, 137, 137)">
+  <text slot="title">文本组件</text>
 
-<view class="info">
-<text>文本组件数目：{{longText.length}}</text>
-</view>
+</my_infoTable>
 
-<view class="button-group-table">
-    <button bindtap="createLongText">创建文本组件</button>
-    <button bindtap="removeLongText">删除文本组件</button>
-</view>
 
-<block wx:for="{{longText}}" wx:key="itemIndex" 
-    wx:for-item="itemItem" wx:for-index="itemIndex">
-<view class="textareaView">
-<view class="adjustTheLength">
-<text class="lengthLimit">文本长度限制:{{theMaxLengthOfLongText[itemIndex]==0?"无":theMaxLengthOfLongText[itemIndex]}}</text>
-<button bindtap="addLength" class="addLength" data-index="{{itemIndex}}">+50</button>
-<button bindtap="decLength" class="decLength" data-index="{{itemIndex}}">-50</button>
-<button bindtap="removeLongTextSpecial" class="removeLongTextSpecial" data-index="{{itemIndex}}">删除该表</button>
-</view>
-<input value="{{longTextQuestion[itemIndex]}}" placeholder="请输入问题" bindinput="longTextQuestionInput" data-index="{{itemIndex}}"/>
-<view class="lineForLongText"></view> 
-<textarea placeholder="请输入内容" maxlength="{{theMaxLengthOfLongText[itemIndex]}}" value="{{itemItem}}" bindinput="longTextInput" data-index="{{itemIndex}}">
-</textarea>
-</view>
-</block>
+<view class="buttonOne">
+    <my_buttonOne title="创建文本组件" bindclick="createLongText"></my_buttonOne>
+  </view>
+  <view class="buttonOne">
+    <my_buttonOne title="删除文本组件" bindclick="removeLongText"></my_buttonOne>
+  </view>
+
+
+
+<my_longText  id="longText"></my_longText>
+
 
 <view class="line"></view> 
-<view class="finalSubmit">
-<button bindtap="saveToFormat">保存至模版</button>
 
-</view>
+
+<my_buttonOne title="保存至模版" bind:tap="saveToFormat"></my_buttonOne>
 
 
 </view>

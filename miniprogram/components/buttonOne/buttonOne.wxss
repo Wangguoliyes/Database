@@ -1,0 +1,6 @@
+.Button{
+
+  box-shadow: 0rpx 0rpx 2rpx rgb(133, 132, 132);
+  border-radius: 5rpx;
+  width: 200rpx;
+}

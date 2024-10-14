@@ -3,20 +3,36 @@ Page({
 
   
   data: {
+    totalNumber:0,
+    manage:false,
+    needDelete:[],
     formatData:[],
     page:0,
     hasMore:true,
     formatTime:[]
   },
 
+  
   getFormatInfomation:function(e){
     const db = wx.cloud.database();
     const collection = db.collection('format');
+    collection.count().then(res=>{
+  
+      this.setData({
+        totalNumber:res.total
+      })
+    })
+    
+
     if(this.data.hasMore){
     collection.orderBy('createTime', 'desc').skip(this.data.page*10).limit(10).field({
+      formatData:{
+        remarks:true
+      },
+ 
       formatName:true,
       createTime:true,
-      remarks:true
+   
     }).get({
       success:res=>{
         console.log(res)
@@ -58,7 +74,6 @@ Page({
 
   onLoad(options) {
     this.getFormatInfomation()
-   
   },
 
 
@@ -78,8 +93,10 @@ onPullDownRefresh:function(){
     page:0,
     hasMore:true,
     formatTime:[]
+  },()=>{
+    this.getFormatInfomation()
   });
-  this.getFormatInfomation()
+
   wx.stopPullDownRefresh()
 },
 
@@ -91,14 +108,100 @@ onReachBottom:function(){
   })
   this.getFormatInfomation()
 },
+
 goToFormatInfo:function(e){
-
+  console.log("goToFormatInfo")
   const formatName=e.currentTarget.dataset.name
-  
-  wx.navigateTo({
-    url:`../formatDetailInfomation/formatDetailInfomation?formatName=${formatName}`
-  })
+  const tempId=e.currentTarget.dataset.id
+  if(this.data.manage==false){
+    
+     console.log(e)
+     wx.navigateTo({
+      url:`../formatDetailInfomation/formatDetailInfomation?formatName=${formatName}`
+    })
+    }
+    else{
+      const tempNeedDelete=this.data.needDelete
+      let index=tempNeedDelete.indexOf(tempId)
+      if(index==-1){
+      tempNeedDelete.push(tempId)
+      }
+      else{
+        tempNeedDelete.splice(index,1)
+      }
+      this.setData({
+        needDelete:tempNeedDelete
+      })
+    }
 
+},
+
+manageTap:function(e){
+  console.log("manageTap")
+  let tempManage=this.data.manage
+  let tempNeedDelete=[]
+  if(tempManage==false){
+    tempManage=true
+  }
+  else{
+    tempManage=false
+  }
+this.setData({
+  manage:tempManage,
+  needDelete:tempNeedDelete
+})
+
+
+},
+
+deleteTap:function(e){
+
+  if(this.data.manage==false){
+    return
+  }
+  else{
+    wx.showModal({
+      title: '确认操作', // 标题
+      content: '你确定要执行这个操作吗？', // 内容
+      success: res=> {
+        if (res.confirm) {
+          const db = wx.cloud.database();
+          const collection = db.collection('format');
+          const tasks = this.data.needDelete.map(tempId => 
+          collection.doc(tempId).remove());
+          wx.showToast({
+            title: '删除中',
+            duration:1
+          })
+
+          setTimeout(()=>{
+            this.setData({
+              needDelete: []
+            });
+          },500)
+          
+          setTimeout(()=>{
+            this.onPullDownRefresh()
+          },500)
+
+       
+
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+          // 用户点击取消后的回调
+        }
+      }
+    });
+
+
+
+   
+   
+
+ 
+
+  }
 }
+
  
 })

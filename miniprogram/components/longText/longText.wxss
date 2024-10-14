@@ -1,0 +1,60 @@
+
+.lineForLongText{
+  width: 100%;             /* 分隔线的宽度 */
+  height: 1px;             /* 分隔线的高度 */
+  background-color: rgb(141, 139, 139);   /* 分隔线颜色 */
+  margin: 5px 0;      
+}
+
+
+.textareaView{
+  
+  margin:20rpx;
+  padding: 10rpx;
+  background-color: rgb(253, 235, 235);
+  border-radius: 15rpx;
+  box-shadow: 0 0rpx 5rpx rgb(141, 139, 139);
+  margin-bottom: 30rpx;
+
+}
+
+
+
+.adjustTheLength{
+  display: flex;
+  margin-bottom: 30rpx;
+}
+.lengthLimit{
+  flex:4;
+  padding:15rpx;
+  background-color: rgb(255, 251, 213);
+  border-radius: 5rpx;
+  line-height: 60rpx;
+  font-size: 25rpx;
+
+}
+.adjustTheLength .addLength{
+ 
+  flex:1;
+  line-height: 60rpx;
+  border-radius: 0rpx;
+  font-size: 25rpx;
+  background-color: rgb(134, 196, 255);
+}
+
+.adjustTheLength .decLength{
+
+  flex:1;
+  line-height: 60rpx;
+  border-radius: 0rpx;
+  font-size: 25rpx;
+
+  background-color: rgb(255, 132, 128);
+}
+.adjustTheLength .removeLongTextSpecial{
+flex:1;
+border-radius: 0rpx;
+font-size: 20rpx;
+background-color: rgb(255, 79, 67);
+}
+

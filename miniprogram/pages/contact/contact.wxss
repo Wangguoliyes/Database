@@ -1,10 +1,9 @@
 
 page{
-  background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/background4.jpg?sign=1155ac8663f5cbe858707dd346e18a60&t=1726803374");
+ 
   background-color: #fcfcf5;
-  background-size:cover;
-  background-repeat: no-repeat; 
-  background-position: center; 
+
+
 
 }
 

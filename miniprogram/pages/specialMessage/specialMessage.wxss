@@ -1,27 +1,19 @@
+/* pages/format/format.wxss */
 page{
-  /* background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/background2.jpg?sign=3565fca3a2e9a01dbef2303bcc0653ea&t=1726803237"); */
-  background-color: #fdfde9;
-  /* background-size:cover;
-  background-repeat: no-repeat; 
-  background-position: center;  */
-
+  background-color: #5e4709;
+  display: flex;
+  justify-content: center;
 }
-
-
-
-.infoTable{
-  background-color: rgb(247, 243, 232);
+.container{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  width: 95%;
+  padding-bottom: 200rpx;
+  background-color: #fcffee;
   border-radius: 20rpx;
-  margin: 20rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0rpx 1rpx 5rpx ;
-    width: 700rpx;
-    height: 200rpx;
 }
-.infoTableText{
-  display: block;
- overflow:hidden;
- text-overflow: ellipsis; 
- white-space: nowrap; /* 不换行 */
-  margin: 20rpx;
+.theHead{
+  display: flex;
+  justify-content: space-around;
+margin: 20rpx;
 }

@@ -1,0 +1,6 @@
+<view class="ROOT">
+<view class="View" style="background-color: {{color}};">
+<slot></slot>
+
+</view>
+</view>

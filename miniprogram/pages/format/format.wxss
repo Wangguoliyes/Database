@@ -1,13 +1,22 @@
 /* pages/format/format.wxss */
 page{
-  /* background-image: url("https://646f-document-8g25jiph76464510-1329478417.tcb.qcloud.la/background3.jpg?sign=d4a1654316eeb0ca3086527714e39c1a&t=1726803321"); */
-  background-color: #fdfde9;
-  /* background-size:cover;
-  background-repeat: no-repeat; 
-  background-position: center;  */
-
+  background-color: #5e4709;
+  display: flex;
+  justify-content: center;
 }
-
+.container{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  width: 95%;
+  padding-bottom: 200rpx;
+  background-color: #fcffee;
+  border-radius: 20rpx;
+}
+.theHead{
+  display: flex;
+  justify-content: space-around;
+margin: 20rpx;
+}
 
 .infoTable{
   background-color: rgb(247, 243, 232);

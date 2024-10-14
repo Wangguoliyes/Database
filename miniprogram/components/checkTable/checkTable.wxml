@@ -1,0 +1,31 @@
+<wxs src="utils.wxs" module="utils" />
+<view class="ROOT"> 
+
+  <block wx:for="{{formatData.checkGroupQuestion}}" wx:key="tableIndex" wx:for-item="tableItem" wx:for-index="tableIndex">
+<view class="check-group-view">
+
+<block wx:if="{{able=='true'}}">
+<view class="check-group-button-view">
+<button bindtap="addCheckItem"  data-index="{{tableIndex}}">增加选项</button>
+<button bindtap="removeCheckItem" data-index="{{tableIndex}}">删除选项</button>
+<button bindtap="removeCheckItemSpecial" data-index="{{tableIndex}}">删除该表</button>
+
+</view>
+</block>
+
+  <checkbox-group  class="check-group"  data-index="{{tableIndex}}" bindchange="onCheckChange">
+    <input value="{{tableItem}}" bindinput="checkQuestionInput" data-tableindex="{{tableIndex}}"  placeholder="输入问题值" disabled="{{able=='true'?false:true}}"/>
+
+    <block wx:for="{{formatData.checkGroup[tableIndex]}}" wx:key="itemIndex" 
+    wx:for-item="itemItem" wx:for-index="itemIndex">
+    <label style="display: flex; margin-top: 10rpx;">
+    <checkbox value="{{itemIndex}}" checked="{{render=='true'&&utils.myIndex(formatData.checkValue[tableIndex],itemIndex)}}"  /><input bindinput="checkItemInput" value="{{itemItem}}"  data-tableindex="{{tableIndex}}" data-itemindex="{{itemIndex}}"  placeholder="输入选项值"  disabled="{{able=='true'?false:true}}" /></label>
+    </block> 
+
+
+  </checkbox-group>
+ 
+</view>
+</block>
+
+</view>
