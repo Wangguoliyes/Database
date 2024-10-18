@@ -48,7 +48,12 @@ Page({
           formatTime:this.data.formatTime,
           hasMore:this.data.hasMore,
           page:this.data.page,
-          formatData:[...this.data.formatData,...res.data]
+          formatData: [
+            ...this.data.formatData,
+            ...res.data.filter(item => 
+              !this.data.formatData.some(existingItem => existingItem._id === item._id)
+            )
+          ]
         })
       },
       fail:err=>{

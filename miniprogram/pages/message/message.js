@@ -26,11 +26,13 @@ Page({
     })
 
     if(this.data.hasMore){
+      
     collection.orderBy('createTime', 'desc').skip(this.data.page*10).limit(10).field({
       formatData:{
         remarks:true,
         formatName:true,
-        nickName:true
+        nickName:true,
+        readed:true
       },
       createTime:true
    
@@ -54,7 +56,12 @@ Page({
           formatTime:this.data.formatTime,
           hasMore:this.data.hasMore,
           page:this.data.page,
-          formatData:[...this.data.formatData,...res.data],
+          formatData: [
+            ...this.data.formatData,
+            ...res.data.filter(item => 
+              !this.data.formatData.some(existingItem => existingItem._id === item._id)
+            )
+          ]
 
         })
       },

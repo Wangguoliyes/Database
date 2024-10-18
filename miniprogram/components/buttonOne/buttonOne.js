@@ -7,7 +7,7 @@ Component({
   properties: {
     color:{
       type:String,
-      value:"rgb(205, 205, 240)"
+      value:"rgb(214, 183, 81)"
     },
     title:{
       type:String,

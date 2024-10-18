@@ -7,7 +7,18 @@ options:{
    * 组件的属性列表
    */
   properties: {
-   
+  imageSrc:{
+    type:String,
+    value:"../../image/icon/icon.png"
+  },
+   colorImage:{
+     type:String,
+     value:"rgb(179, 138, 27)"
+   },
+   colorText:{
+    type:String,
+    value:"rgb(221, 176, 51)"
+  }
   },
 
   /**

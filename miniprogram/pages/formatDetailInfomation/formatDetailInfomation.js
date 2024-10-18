@@ -146,7 +146,7 @@ Page({
   lookForTheRelavantMessage:function(e){
     const tempName=this.data.formatName
     wx.navigateTo({
-      url:`../specialMessage/specialMessage?data=${tempName}`
+      url:`../specialMessage/specialMessage?data=${tempName}&type=all`
     })
   }
 })

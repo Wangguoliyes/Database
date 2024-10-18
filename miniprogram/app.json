@@ -11,7 +11,8 @@
   "my_checkTable": "/components/checkTable/checkTable",
   "my_longText":"/components/longText/longText",
   "my_ovalMessage":"/components/ovalMessage/ovalMessage",
-  "my_squareMessage":"/components/squareMessage/squareMessage"
+  "my_squareMessage":"/components/squareMessage/squareMessage",
+  "my_lineMessage":"/components/lineMessage/lineMessage"
 
 
 },
@@ -30,8 +31,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    
-    "navigationBarBackgroundColor": "#F5F5DC"
+    "navigationBarTitleText": "文档管理系统",
+    "navigationBarBackgroundColor": "#6e5d12"
    
   },
   "tabBar": {

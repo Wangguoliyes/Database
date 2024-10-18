@@ -8,5 +8,15 @@ module.exports = {
     }
   }
     return false
+  },
+
+  readed:function(a) {
+    if(a==true){
+      return "rgb(226, 191, 95)"
+    }
+    else{
+      return "rgb(91, 255, 132)"
+    }
   }
+  
 };

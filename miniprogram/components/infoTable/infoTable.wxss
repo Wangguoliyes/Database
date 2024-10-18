@@ -15,7 +15,7 @@
   
   padding: 20rpx;
   border-radius: 0rpx;
-  box-shadow: 0rpx 0rpx 2rpx gray;
+ 
   text-align: center
 }
 

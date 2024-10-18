@@ -1,11 +1,11 @@
 <view class="ROOT" >
-<view class="View"  >
+<view class="View"  style="background-color: {{colorText}};">
 
-<view class="picture">
- <image ></image>
+<view class="picture" style="background-color: {{colorImage}}; ">
+ <image src="{{imageSrc}}" mode="aspectFit" class="image"></image>
 </view>
-<view class="text">
-  <text>d</text>
+<view class="text" >
+  <slot></slot>
 </view>
 </view>
 

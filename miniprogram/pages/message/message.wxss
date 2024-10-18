@@ -1,5 +1,6 @@
 /* pages/format/format.wxss */
 page{
+  /* background-color: rgb(rgb(91, 255, 132), green, blue); */
   background-color: #5e4709;
   display: flex;
   justify-content: center;

@@ -10,12 +10,42 @@
 <text>文档数目：</text>
 <text>{{totalData}}</text>
 </view>
-
 </my_squareMessage>
 
-<view class="buttonGroup">
 
+<my_lineMessage color="purple">
+<text style="margin-left: 20rpx;">未读文档：</text>
+<text>{{newData}}</text>
+</my_lineMessage>
+
+<my_lineMessage  color="blue">
+<text style="margin-left: 20rpx;">今日新增：</text>
+<text>{{newDayData}}</text>
+</my_lineMessage>
+
+
+
+<view class="buttonGroup" style="margin-top: 50rpx;" >
+<my_navigator bind:tap="Click_createFormat" imageSrc="../../image/icon/format.png">
+<text>创建模版</text>
+</my_navigator>
+
+<my_navigator colorImage="#c73126" colorText="#e65349" bind:tap="Click_checkUnread" imageSrc="../../image/icon/unread.png">
+<text>未读文档</text>
+</my_navigator>
 </view>
+<view class="buttonGroup">
+<my_navigator colorImage="#39c426" colorText="#5de74b" imageSrc="../../image/icon/data.png">
+<text>数据分析</text>
+</my_navigator>
+
+<my_navigator colorImage="#1880b1" colorText="#41addf" bind:tap="Click_checkRead" imageSrc="../../image/icon/read.png">
+<text>已读文档</text>
+</my_navigator>
+</view>
+
+
+
 <!-- <view class="Navigator" >
 <my_navigator bindclick="Click_createFormat">
 <text>创建模版</text>

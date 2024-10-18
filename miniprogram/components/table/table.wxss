@@ -1,6 +1,8 @@
 .scrollX{
+  margin-left: 20rpx;
   margin-top: 20rpx;
   height: auto;
+  width: 95%;
   } 
 .buttonBlockUp{
 margin-left: 42px;

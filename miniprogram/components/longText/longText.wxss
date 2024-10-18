@@ -13,7 +13,7 @@
   padding: 10rpx;
   background-color: rgb(253, 235, 235);
   border-radius: 15rpx;
-  box-shadow: 0 0rpx 5rpx rgb(141, 139, 139);
+
   margin-bottom: 30rpx;
 
 }

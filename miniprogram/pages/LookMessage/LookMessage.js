@@ -182,7 +182,8 @@ const tempTime = new Date()
               longText:childLongText.data.formatData.longText,
               longTextQuestion:childLongText.data.formatData.longTextQuestion,
               theMaxLengthOfLongText:childLongText.data.formatData.theMaxLengthOfLongText,
-            create:tempTime
+              create:tempTime,
+              readed:false
             }
           },
           ()=>{

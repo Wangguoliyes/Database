@@ -8,6 +8,8 @@
 <input slot="content"  disabled="true" value="{{formatData.formatName}}"/>
 <text slot="content" style=" margin: 10rpx; color:rgb(199, 45, 18)" >提交人 :</text>
 <text slot="content"> {{formatData.nickName}}</text>
+<text slot="content" style=" margin: 10rpx; color:rgb(182, 179, 24)" >提交时间 :</text>
+<text slot="content"> {{dataTime}}</text>
 <text slot="content" style=" margin: 10rpx; color:rgb(193, 18, 199) " > 备注 :</text>
 <textarea slot="content"  disabled="true" value="{{formatData.remarks}}" />
 </my_infoTable>

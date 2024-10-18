@@ -24,12 +24,11 @@
 <block wx:for="{{formatData}}" wx:for-index="messageIndex" wx:for-item="messageItem" wx:key="messageIndex">
 
 
-<my_itemTable change="{{utils.myIndex(needDelete,messageItem._id)?true:false}}"  bindclick="goToMessageInfo" data-name="{{messageItem.formatData.formatName}}" data-id="{{messageItem._id}}">
+<my_itemTable change="{{utils.myIndex(needDelete,messageItem._id)?true:false}}"  bindclick="goToMessageInfo" data-name="{{messageItem.formatData.formatName}}" data-id="{{messageItem._id}}" color="{{utils.readed(messageItem.formatData.readed)}}">
 <text slot="title1" >模版名称：</text>
 <text slot="content1" >{{messageItem.formatData.formatName}}</text>
 <text slot="title2"  >提交人：</text>
-<text slot="content2"  >{{messageItem.formatData.nickName}}
-</text>
+<text slot="content2"  >{{messageItem.formatData.nickName}}</text>
 <text slot="title3">接收时间：</text>
 <text slot="content3">{{formatTime[messageIndex]}}</text>
 </my_itemTable> 

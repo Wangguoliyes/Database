@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    dataTime:"",
    formatData:{},
 
   },
@@ -16,15 +16,47 @@ Page({
   const tempid=options.id
   const db = wx.cloud.database();
   const collection = db.collection('data');
+
+
+
+
+
+
+
   collection.where({
     _id:tempid
   }).get({
     success:res=>{
+      // console.log("res" , res.data[0].createTime)
       this.setData({
+        dataTime:res.data[0].createTime.toLocaleString(),
         formatData:{
           ...res.data[0].formatData},
       },()=>{
         this.refreshComponentData()
+        if(this.data.formatData.readed==false){
+          collection.where({
+            _id:tempid
+          }).update({
+        
+           data:{
+             formatData:{
+              readed:true
+             }
+            },
+            success:res=>{
+              console.log('更新成功', res);
+          
+            },
+            fail: function(err) {
+              console.error('更新失败', err);
+            }
+          })
+        
+
+        }
+
+
       })
 
       
@@ -37,6 +69,8 @@ Page({
     }
   })
 
+
+  
   
   },
 

@@ -72,12 +72,12 @@
 </view>
 
 <view class="Button">
-<my_buttonSquare width="300rpx"  color="rgb(219, 252, 101)"  bindtap="changeFormatBasedOnTheFormat">
+<my_buttonSquare width="300rpx"  color="rgb(219, 252, 101)"  bindtap="">
 <text  >数据汇总</text>
 </my_buttonSquare>
 
 <my_buttonSquare width="300rpx"  color="aquamarine"  >
-<text   >查看模版相关文档</text>
+<text>数据查询</text>
 </my_buttonSquare>
 </view>
 

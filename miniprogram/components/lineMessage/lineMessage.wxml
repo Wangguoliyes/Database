@@ -1,0 +1,5 @@
+<view class="View" style="background-color: {{color}};">
+<view class="left">
+<slot></slot>
+</view>
+</view>

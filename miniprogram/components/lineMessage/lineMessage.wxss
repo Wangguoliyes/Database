@@ -1,0 +1,16 @@
+.View{
+
+height: 50rpx;
+transition: 0.4s;
+}
+
+.left{
+  background-color: rgb(102, 255, 0);
+  height: 50rpx;
+  width: 70%;
+  transition: 0.3s;
+}
+.left:active{
+  background-color: #d8c573;
+  width: 90%;
+}

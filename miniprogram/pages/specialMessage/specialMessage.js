@@ -3,6 +3,7 @@ Page({
 
   
   data: {
+    type:"",
     totalNumber:0,
     desireName:"",
     manage:false,
@@ -18,28 +19,60 @@ Page({
     const desireName=this.data.desireName
     const db = wx.cloud.database();
     const collection = db.collection('data');
-
-    collection.where({
-      formatData:{
-        formatName:desireName,
-      }
-    }).count().then(res=>{
-  
-      this.setData({
-        totalNumber:res.total
+ 
+var Readed
+    if(this.data.type=="read"){
+      Readed=true
+      collection.where({
+        formatData:{
+          readed:Readed,
+        }
+      }).count().then(res=>{
+        this.setData({
+          totalNumber:res.total
+        })
       })
-    })
+
+
+    }
+    else if(this.data.type=="unread"){
+      Readed=false
+      collection.where({
+        formatData:{
+          readed:Readed,
+        }
+      }).count().then(res=>{
+        this.setData({
+          totalNumber:res.total
+        })
+      })
+    }
+    else if(this.data.type=="all"){
+
+      collection.where({
+        formatData:{
+          formatName:desireName,
+        }
+      }).count().then(res=>{
+        this.setData({
+          totalNumber:res.total
+        })
+      })
+    }
+
 
     if(this.data.hasMore){
     collection.where({
       formatData:{
+        readed:Readed,
         formatName:desireName,
       }
     }).orderBy('createTime', 'desc').skip(this.data.page*10).limit(10).field({
       formatData:{
         remarks:true,
         formatName:true,
-        nickName:true
+        nickName:true,
+        readed:true
       },
       createTime:true
    
@@ -63,7 +96,12 @@ Page({
           formatTime:this.data.formatTime,
           hasMore:this.data.hasMore,
           page:this.data.page,
-          formatData:[...this.data.formatData,...res.data],
+          formatData: [
+            ...this.data.formatData,
+            ...res.data.filter(item => 
+              !this.data.formatData.some(existingItem => existingItem._id === item._id)
+            )
+          ]
 
         })
       },
@@ -90,7 +128,8 @@ Page({
 
   onLoad(options) {
     this.setData({
-      desireName:options.data
+      desireName:options.data,
+      type:options.type
     },()=>{
       this.getFormatInfomation()
     })

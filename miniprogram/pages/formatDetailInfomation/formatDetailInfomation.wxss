@@ -1,8 +1,17 @@
-.container {
-  padding: 20rpx;
-background-color: rgb(255, 253, 236);
+page{
+  background-color: #5e4709;
+  display: flex;
+  justify-content: center;
 }
+.container{
+  
+  width: 95%;
+  padding-bottom: 250rpx;
+  /* background-color: #e65349; */
+  background-color: #fffde4;
 
+border-radius: 20rpx;
+}
 .Button{
   margin-top: 20rpx;
 display: flex;

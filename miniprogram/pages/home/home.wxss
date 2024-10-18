@@ -1,6 +1,6 @@
 
 page{
-  background-color: #756106;
+  background-color: #5e4709;
   display: flex;
   justify-content: center;
 }
@@ -8,13 +8,13 @@ page{
   
   width: 95%;
   padding-bottom: 250rpx;
-  background-color: #d8c573;
+  background-color: #e65349;
   background-color: #fcffee;
 
 border-radius: 20rpx;
 }
 
-.Navigator{
-  margin-top: 20rpx;
+.buttonGroup{
+  display: flex;
+  justify-content: center;
 }
-
